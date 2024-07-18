@@ -35,8 +35,7 @@
 #import "NSFileManager+DirectoryLocations.h"
 
 @interface BetaBuilderAppDelegate ()
-
-@property (nonatomic) BOOL runningInCommandLineSession;
+@property (nonatomic, assign) BOOL runningInCommandLineSession;
 @property (nonatomic, strong) NSDictionary *indexTemplateAlertPaths;
 
 @end
@@ -47,7 +46,6 @@
 @synthesize deploymentHelpPanel = _deploymentHelpPanel;
 @synthesize archiveIPAHelpPanel = _archiveIPAHelpPanel;
 @synthesize builderController = _builderController;
-@synthesize preferencesPanel = _preferencesPanel;
 
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification {
     //Setup Drag Target for IPA Files
@@ -86,7 +84,7 @@
                 [fileManager copyItemAtPath:templatePathInBundle toPath:templatePath error:nil];
         } else {
             if ([fileManager contentsEqualAtPath:templatePathInBundle andPath:templatePath]) {
-                NSLog(@"Index Template Already Exists And They Are the Same - Not Copying From Bundle");
+//                NSLog(@"Index Template Already Exists And They Are the Same - Not Copying From Bundle");
             } else {
                 NSLog(@"Index Template Exists But Has Been Modified");
 
@@ -95,8 +93,15 @@
                     if (!shouldSuppressAlert) {
                         self.indexTemplateAlertPaths = @{@"fromPath" : templatePathInBundle, @"toPath" : templatePath};
 
-                        NSAlert *indexTemplateAlert = [NSAlert alertWithMessageText:@"A Newer Index Template File Exists" defaultButton:@"Do Nothing" alternateButton:@"Replace File" otherButton:nil informativeTextWithFormat:@"The template index file used to create the HTML output has been updated to include new functionality. It appears you alread have a version of this file in place (%@). Would you like to replace this file? Any customizations will be lost - you may want to backup the file first.", templatePath];
-                        [indexTemplateAlert beginSheetModalForWindow:self.window modalDelegate:self didEndSelector:@selector(alertDidEnd:returnCode:contextInfo:) contextInfo:&_indexTemplateAlertPaths];
+                        NSAlert *indexTemplateAlert = [NSAlert alertWithMessageText:@"A Newer Index Template File Exists"
+                                                                      defaultButton:@"Do Nothing"
+                                                                    alternateButton:@"Replace File"
+                                                                        otherButton:nil
+                                                          informativeTextWithFormat:@"The template index file used to create the HTML output has been updated to include new functionality. It appears you alread have a version of this file in place (%@). Would you like to replace this file? Any customizations will be lost - you may want to backup the file first.", templatePath];
+                        [indexTemplateAlert beginSheetModalForWindow:self.window
+                                                       modalDelegate:self
+                                                      didEndSelector:@selector(alertDidEnd:returnCode:contextInfo:)
+                                                         contextInfo:&_indexTemplateAlertPaths];
                     }
                 }
             }
@@ -127,9 +132,10 @@
 #define kWebserverArgument @"-webserver"
 #define kOutputDirectoryArgument @"-outputDirectory"
 #define kTemplateArgument @"-template"
+#define kAppStore @"-appStore"
+#define kWorkspace @"-workspace"
 
 - (BOOL)processCommandLineArguments:(NSArray *)arguments {
-    NSLog(@"Processing Command Line Arguments");
 
     BOOL processedArgs = NO;
     
@@ -137,6 +143,8 @@
     NSString *webserverAddress = nil;
     NSString *outputPath = nil;
     NSString *templateFile = nil;
+    NSString *appStore = nil;
+    NSString *workspace = nil;
     
     for (NSString *argument in arguments) {
         NSArray *splitArgument = [argument componentsSeparatedByString:kArgumentSeperator];
@@ -150,6 +158,10 @@
                 outputPath = [splitArgument objectAtIndex:1];
             } else if ([[splitArgument objectAtIndex:0] isEqualToString:kTemplateArgument]) {
                 templateFile = [splitArgument objectAtIndex:1];
+            } else if ([[splitArgument objectAtIndex:0] isEqualToString:kAppStore]) {
+                appStore = [splitArgument objectAtIndex:1];
+            } else if ([[splitArgument objectAtIndex:0] isEqualToString:kWorkspace]) {
+                workspace = [splitArgument objectAtIndex:1];
             }
         }
     }
@@ -159,11 +171,28 @@
             self.builderController.templateFile = templateFile;
         }
         
-        [self.builderController setupFromIPAFile:ipaPath];
+        [self.builderController setupFromIPAFile:ipaPath workspace:workspace];
         [self.builderController generateFilesWithWebserverAddress:webserverAddress andOutputDirectory:outputPath];
         
         [NSApp performSelector:@selector(terminate:) withObject:nil afterDelay:0.0];
-
+        
+        processedArgs = YES;
+    }
+    
+    if (ipaPath && webserverAddress==nil && outputPath==nil) {
+        if (templateFile) {
+            self.builderController.templateFile = templateFile;
+        }
+        self.builderController.saveToDefaultFolder = YES;
+        if ([appStore.uppercaseString isEqualToString:@"YES"]) {
+            self.builderController.uploadToAppStore = YES;
+        } else {
+            self.builderController.uploadToAppStore = NO;
+        }
+        
+        [self.builderController setupFromIPAFile:ipaPath workspace:workspace];
+        
+        [NSApp performSelector:@selector(terminate:) withObject:nil afterDelay:0.0];
         processedArgs = YES;
     }
 
@@ -176,11 +205,8 @@
     if (returnCode == NSAlertAlternateReturn) {
         if (contextInfo) {
             NSLog(@"Remove Existing Index File %@", self.indexTemplateAlertPaths[@"toPath"]);
-
             NSFileManager *fileManager = [NSFileManager defaultManager];
-
             [fileManager removeItemAtPath:self.indexTemplateAlertPaths[@"toPath"] error:nil];
-            
             [fileManager copyItemAtPath:self.indexTemplateAlertPaths[@"fromPath"] toPath:self.indexTemplateAlertPaths[@"toPath"] error:nil];
         }
     } else if (returnCode == NSAlertDefaultReturn) {
@@ -194,16 +220,6 @@
 
 - (IBAction)showArchiveHelpPanel:(id)sender {
 	[self.archiveIPAHelpPanel setIsVisible:YES];
-}
-
-- (IBAction)showPreferencesPanel:(id)sender {
-    [self.preferencesPanel setIsVisible:YES];
-}
-
-- (BOOL)application:(NSApplication *)theApplication openFile:(NSString *)filename {
-	[self.builderController setupFromIPAFile:filename];
-	
-	return YES;
 }
 
 - (BOOL)applicationShouldTerminateAfterLastWindowClosed:(NSApplication *)sender {

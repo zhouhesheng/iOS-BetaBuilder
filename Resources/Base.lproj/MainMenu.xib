@@ -1,8 +1,9 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="5037.3" systemVersion="13C48" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none">
     <dependencies>
-        <deployment defaultVersion="1060" identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="5037.3"/>
+        <deployment identifier="macosx"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="14313.18"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="NSApplication">
@@ -26,11 +27,7 @@
                             <menuItem isSeparatorItem="YES" id="236">
                                 <modifierMask key="keyEquivalentModifierMask" command="YES"/>
                             </menuItem>
-                            <menuItem title="Preferences…" keyEquivalent="," id="129">
-                                <connections>
-                                    <action selector="showPreferencesPanel:" target="494" id="nfs-1J-hLA"/>
-                                </connections>
-                            </menuItem>
+                            <menuItem title="Preferences…" keyEquivalent="," id="129"/>
                             <menuItem isSeparatorItem="YES" id="143">
                                 <modifierMask key="keyEquivalentModifierMask" command="YES"/>
                             </menuItem>
@@ -669,15 +666,15 @@
                             <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                         </textFieldCell>
                     </textField>
-                    <box autoresizesSubviews="NO" title="Application Details" borderType="line" id="551">
+                    <box autoresizesSubviews="NO" borderType="line" title="Application Details" id="551">
                         <rect key="frame" x="17" y="128" width="272" height="362"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <view key="contentView">
-                            <rect key="frame" x="1" y="1" width="270" height="346"/>
+                        <view key="contentView" id="8cQ-qW-y62">
+                            <rect key="frame" x="3" y="3" width="266" height="344"/>
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             <subviews>
                                 <textField verticalHuggingPriority="750" id="548">
-                                    <rect key="frame" x="15" y="44" width="247" height="17"/>
+                                    <rect key="frame" x="15" y="42" width="247" height="17"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Full Web Deployment Path" id="549">
                                         <font key="font" metaFont="system"/>
@@ -686,7 +683,7 @@
                                     </textFieldCell>
                                 </textField>
                                 <textField verticalHuggingPriority="750" id="554">
-                                    <rect key="frame" x="14" y="319" width="240" height="17"/>
+                                    <rect key="frame" x="14" y="317" width="240" height="17"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Archive IPA File" id="555">
                                         <font key="font" metaFont="system"/>
@@ -695,16 +692,16 @@
                                     </textFieldCell>
                                 </textField>
                                 <textField verticalHuggingPriority="750" id="547">
-                                    <rect key="frame" x="18" y="14" width="234" height="22"/>
+                                    <rect key="frame" x="18" y="12" width="234" height="22"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" placeholderString="https://myserver.com/myapp_beta" drawsBackground="YES" id="550">
+                                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" placeholderString="http://myserver.com/myapp_beta" drawsBackground="YES" id="550">
                                         <font key="font" metaFont="system"/>
-                                        <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                                        <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                         <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                     </textFieldCell>
                                 </textField>
                                 <textField verticalHuggingPriority="750" id="556">
-                                    <rect key="frame" x="17" y="289" width="234" height="22"/>
+                                    <rect key="frame" x="17" y="287" width="234" height="22"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" placeholderString="IPA Not Specified" drawsBackground="YES" id="557">
                                         <font key="font" metaFont="system"/>
@@ -713,7 +710,7 @@
                                     </textFieldCell>
                                 </textField>
                                 <button verticalHuggingPriority="750" id="558">
-                                    <rect key="frame" x="135" y="253" width="124" height="32"/>
+                                    <rect key="frame" x="135" y="251" width="124" height="32"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                     <buttonCell key="cell" type="push" title="Choose IPA..." bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="559">
                                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -724,16 +721,16 @@
                                     </connections>
                                 </button>
                                 <textField verticalHuggingPriority="750" id="539">
-                                    <rect key="frame" x="18" y="133" width="234" height="22"/>
+                                    <rect key="frame" x="18" y="131" width="234" height="22"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" placeholderString="1.0" drawsBackground="YES" id="542">
                                         <font key="font" metaFont="system"/>
-                                        <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                                        <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                         <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                     </textFieldCell>
                                 </textField>
                                 <textField verticalHuggingPriority="750" id="544">
-                                    <rect key="frame" x="15" y="108" width="240" height="17"/>
+                                    <rect key="frame" x="15" y="106" width="240" height="17"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="App Name" id="545">
                                         <font key="font" metaFont="system"/>
@@ -742,7 +739,7 @@
                                     </textFieldCell>
                                 </textField>
                                 <textField verticalHuggingPriority="750" id="540">
-                                    <rect key="frame" x="15" y="163" width="240" height="17"/>
+                                    <rect key="frame" x="15" y="161" width="240" height="17"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Bundle Version" id="541">
                                         <font key="font" metaFont="system"/>
@@ -751,25 +748,25 @@
                                     </textFieldCell>
                                 </textField>
                                 <textField verticalHuggingPriority="750" id="535">
-                                    <rect key="frame" x="18" y="188" width="234" height="22"/>
+                                    <rect key="frame" x="18" y="186" width="234" height="22"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" placeholderString="com.mycompany.myapp" drawsBackground="YES" id="536">
                                         <font key="font" metaFont="system"/>
-                                        <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                                        <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                         <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                     </textFieldCell>
                                 </textField>
                                 <textField verticalHuggingPriority="750" id="543">
-                                    <rect key="frame" x="18" y="78" width="234" height="22"/>
+                                    <rect key="frame" x="18" y="76" width="234" height="22"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" placeholderString="MyApp" drawsBackground="YES" id="546">
                                         <font key="font" metaFont="system"/>
-                                        <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                                        <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                         <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                     </textFieldCell>
                                 </textField>
                                 <textField verticalHuggingPriority="750" id="537">
-                                    <rect key="frame" x="15" y="218" width="240" height="17"/>
+                                    <rect key="frame" x="15" y="216" width="240" height="17"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Bundle Identifier" id="538">
                                         <font key="font" metaFont="system"/>
@@ -777,22 +774,16 @@
                                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                     </textFieldCell>
                                 </textField>
-                                <box autoresizesSubviews="NO" verticalHuggingPriority="750" title="Box" boxType="separator" titlePosition="noTitle" id="574">
-                                    <rect key="frame" x="18" y="241" width="233" height="5"/>
+                                <box autoresizesSubviews="NO" verticalHuggingPriority="750" boxType="separator" id="574">
+                                    <rect key="frame" x="18" y="239" width="233" height="5"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                    <color key="borderColor" white="0.0" alpha="0.41999999999999998" colorSpace="calibratedWhite"/>
-                                    <color key="fillColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                    <font key="titleFont" metaFont="system"/>
                                 </box>
-                                <box autoresizesSubviews="NO" verticalHuggingPriority="750" title="Box" boxType="separator" titlePosition="noTitle" id="575">
-                                    <rect key="frame" x="18" y="67" width="233" height="5"/>
+                                <box autoresizesSubviews="NO" verticalHuggingPriority="750" boxType="separator" id="575">
+                                    <rect key="frame" x="18" y="65" width="233" height="5"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                    <color key="borderColor" white="0.0" alpha="0.41999999999999998" colorSpace="calibratedWhite"/>
-                                    <color key="fillColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                    <font key="titleFont" metaFont="system"/>
                                 </box>
                                 <button horizontalHuggingPriority="750" verticalHuggingPriority="750" id="576">
-                                    <rect key="frame" x="185" y="38" width="25" height="25"/>
+                                    <rect key="frame" x="185" y="36" width="25" height="25"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                     <buttonCell key="cell" type="help" bezelStyle="helpButton" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="577">
                                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -803,7 +794,7 @@
                                     </connections>
                                 </button>
                                 <button horizontalHuggingPriority="750" verticalHuggingPriority="750" id="602">
-                                    <rect key="frame" x="117" y="314" width="25" height="25"/>
+                                    <rect key="frame" x="117" y="312" width="25" height="25"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                     <buttonCell key="cell" type="help" bezelStyle="helpButton" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="603">
                                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -815,8 +806,6 @@
                                 </button>
                             </subviews>
                         </view>
-                        <color key="borderColor" white="0.0" alpha="0.41999999999999998" colorSpace="calibratedWhite"/>
-                        <color key="fillColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     </box>
                     <button verticalHuggingPriority="750" id="552">
                         <rect key="frame" x="42" y="45" width="222" height="32"/>
@@ -848,14 +837,14 @@
                             <font key="font" metaFont="system"/>
                         </buttonCell>
                     </button>
-                    <progressIndicator horizontalHuggingPriority="750" verticalHuggingPriority="750" maxValue="100" displayedWhenStopped="NO" bezeled="NO" indeterminate="YES" controlSize="small" style="spinning" id="617">
+                    <progressIndicator wantsLayer="YES" horizontalHuggingPriority="750" verticalHuggingPriority="750" maxValue="100" displayedWhenStopped="NO" bezeled="NO" indeterminate="YES" controlSize="small" style="spinning" id="617">
                         <rect key="frame" x="270" y="54" width="16" height="16"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     </progressIndicator>
                     <button id="621">
                         <rect key="frame" x="30" y="88" width="247" height="18"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                        <buttonCell key="cell" type="check" title="Include iOS 3.x Zip With Deploy" bezelStyle="regularSquare" imagePosition="left" alignment="left" inset="2" id="622">
+                        <buttonCell key="cell" type="check" title="Include iOS 3 Zip" bezelStyle="regularSquare" imagePosition="left" alignment="left" inset="2" id="622">
                             <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                             <font key="font" metaFont="system"/>
                         </buttonCell>
@@ -868,7 +857,6 @@
                 <outlet property="archiveIPAHelpPanel" destination="592" id="604"/>
                 <outlet property="builderController" destination="560" id="606"/>
                 <outlet property="deploymentHelpPanel" destination="578" id="590"/>
-                <outlet property="preferencesPanel" destination="NJP-gc-cKv" id="ifH-SU-byl"/>
                 <outlet property="window" destination="371" id="532"/>
             </connections>
         </customObject>
@@ -888,17 +876,17 @@
             </connections>
         </customObject>
         <userDefaultsController representsSharedInstance="YES" id="561"/>
-        <window title="Full Web Deployment Path" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" hidesOnDeactivate="YES" oneShot="NO" visibleAtLaunch="NO" animationBehavior="default" id="578" userLabel="Web Deployment Panel" customClass="NSPanel">
+        <window title="Full Web Deployment Path" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" hidesOnDeactivate="YES" visibleAtLaunch="NO" animationBehavior="default" id="578" userLabel="Web Deployment Panel" customClass="NSPanel">
             <windowStyleMask key="styleMask" titled="YES" closable="YES" utility="YES"/>
             <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
-            <rect key="contentRect" x="230" y="163" width="276" height="442"/>
+            <rect key="contentRect" x="230" y="163" width="276" height="378"/>
             <rect key="screenRect" x="0.0" y="0.0" width="2560" height="1418"/>
             <view key="contentView" id="579">
-                <rect key="frame" x="0.0" y="0.0" width="276" height="442"/>
+                <rect key="frame" x="7" y="11" width="276" height="378"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <textField verticalHuggingPriority="750" id="580">
-                        <rect key="frame" x="17" y="324" width="242" height="68"/>
+                        <rect key="frame" x="17" y="260" width="242" height="68"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <textFieldCell key="cell" controlSize="mini" sendsActionOnEndEditing="YES" id="581">
                             <font key="font" metaFont="system"/>
@@ -908,7 +896,7 @@
                         </textFieldCell>
                     </textField>
                     <textField verticalHuggingPriority="750" id="584">
-                        <rect key="frame" x="17" y="248" width="242" height="68"/>
+                        <rect key="frame" x="17" y="184" width="242" height="68"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <textFieldCell key="cell" controlSize="mini" sendsActionOnEndEditing="YES" id="585">
                             <font key="font" metaFont="system"/>
@@ -918,7 +906,7 @@
                         </textFieldCell>
                     </textField>
                     <textField verticalHuggingPriority="750" id="582">
-                        <rect key="frame" x="17" y="400" width="242" height="22"/>
+                        <rect key="frame" x="17" y="336" width="242" height="22"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <textFieldCell key="cell" controlSize="mini" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Full Web Deployment Path" id="583">
                             <font key="font" metaFont="system" size="18"/>
@@ -927,16 +915,16 @@
                         </textFieldCell>
                     </textField>
                     <textField verticalHuggingPriority="750" id="586">
-                        <rect key="frame" x="17" y="172" width="242" height="68"/>
+                        <rect key="frame" x="17" y="108" width="242" height="68"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                        <textFieldCell key="cell" controlSize="mini" sendsActionOnEndEditing="YES" title="So, if your beta files will be at https://www.mycompany.com/awesome_beta, then that is what you put into this field." id="587">
+                        <textFieldCell key="cell" controlSize="mini" sendsActionOnEndEditing="YES" title="So, if your beta files will be at http://www.mycompany.com/awesome_beta, then that is what you put into this field." id="587">
                             <font key="font" metaFont="system"/>
                             <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                             <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                         </textFieldCell>
                     </textField>
                     <textField verticalHuggingPriority="750" id="588">
-                        <rect key="frame" x="17" y="96" width="242" height="68"/>
+                        <rect key="frame" x="17" y="32" width="242" height="68"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <textFieldCell key="cell" controlSize="mini" sendsActionOnEndEditing="YES" title="If you need to change the deployment URL, you will need to either re-generate or modify the files by hand." id="589">
                             <font key="font" metaFont="system"/>
@@ -944,26 +932,16 @@
                             <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                         </textFieldCell>
                     </textField>
-                    <textField verticalHuggingPriority="750" id="TVI-2u-WAg">
-                        <rect key="frame" x="18" y="20" width="240" height="68"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                        <textFieldCell key="cell" controlSize="mini" sendsActionOnEndEditing="YES" id="qvf-Aa-A7x">
-                            <font key="font" metaFont="systemBold"/>
-                            <string key="title">NOTE: Recent changes to iOS now require the host Web server to be running SSL with a trusted certficiate (i.e. not self-signed).</string>
-                            <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
-                            <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
-                        </textFieldCell>
-                    </textField>
                 </subviews>
             </view>
         </window>
-        <window title="IPA File" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" hidesOnDeactivate="YES" oneShot="NO" visibleAtLaunch="NO" animationBehavior="default" id="592" userLabel="IPA Window" customClass="NSPanel">
+        <window title="IPA File" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" hidesOnDeactivate="YES" visibleAtLaunch="NO" animationBehavior="default" id="592" userLabel="IPA Window" customClass="NSPanel">
             <windowStyleMask key="styleMask" titled="YES" closable="YES" utility="YES"/>
             <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
             <rect key="contentRect" x="230" y="437" width="276" height="172"/>
             <rect key="screenRect" x="0.0" y="0.0" width="2560" height="1418"/>
             <view key="contentView" id="593">
-                <rect key="frame" x="0.0" y="0.0" width="276" height="172"/>
+                <rect key="frame" x="7" y="11" width="276" height="172"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <textField verticalHuggingPriority="750" id="598">
@@ -971,7 +949,7 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <textFieldCell key="cell" controlSize="mini" sendsActionOnEndEditing="YES" id="601">
                             <font key="font" metaFont="system"/>
-                            <string key="title">Create this file in Xcode using 'Build and Archive' (Xcode 3.x) or simply 'Archive' (Xcode 4.x or later). Take the resulting build product and 'Save to Disk...' to create an IPA file with embedded provisioning profile.</string>
+                            <string key="title">Create this file in Xcode using 'Build and Archive' (Xcode 3.x) or simply 'Archive' (Xcode 4.x). Take the resulting build product and 'Save to Disk...' to create an IPA file with embedded provisioning profile.</string>
                             <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                             <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                         </textFieldCell>
@@ -985,29 +963,6 @@
                             <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                         </textFieldCell>
                     </textField>
-                </subviews>
-            </view>
-        </window>
-        <window title="Preferences" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" hidesOnDeactivate="YES" oneShot="NO" releasedWhenClosed="NO" showsToolbarButton="NO" visibleAtLaunch="NO" animationBehavior="default" id="NJP-gc-cKv" customClass="NSPanel">
-            <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" utility="YES"/>
-            <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
-            <rect key="contentRect" x="139" y="81" width="276" height="160"/>
-            <rect key="screenRect" x="0.0" y="0.0" width="1440" height="878"/>
-            <view key="contentView" id="Om8-s9-F7N">
-                <rect key="frame" x="0.0" y="0.0" width="276" height="160"/>
-                <autoresizingMask key="autoresizingMask"/>
-                <subviews>
-                    <button id="EBz-pY-mmH">
-                        <rect key="frame" x="18" y="99" width="240" height="43"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                        <buttonCell key="cell" type="check" title="Supress 'https' warning alert" bezelStyle="regularSquare" imagePosition="left" inset="2" id="Wik-gd-hxk">
-                            <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
-                            <font key="font" metaFont="system"/>
-                        </buttonCell>
-                        <connections>
-                            <binding destination="561" name="value" keyPath="values.supressHTTPSWarning" id="tsV-ut-IQl"/>
-                        </connections>
-                    </button>
                 </subviews>
             </view>
         </window>

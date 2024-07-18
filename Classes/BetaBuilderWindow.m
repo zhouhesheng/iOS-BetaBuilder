@@ -22,7 +22,7 @@
     
     if ([[[draggedFilenames objectAtIndex:0] pathExtension] isEqual:@"ipa"]) {
         BetaBuilderAppDelegate *appDelegate = (BetaBuilderAppDelegate *)[[NSApplication sharedApplication] delegate];
-        [appDelegate.builderController setupFromIPAFile:[draggedFilenames objectAtIndex:0]];
+        [appDelegate.builderController setupFromIPAFile:[draggedFilenames objectAtIndex:0] workspace:nil];
 
         return YES; 
     } else {

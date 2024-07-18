@@ -1,5 +1,5 @@
 //
-//  BetaBuilderAppDelegate.h
+//  BuilderController.h
 //  BetaBuilder
 //
 //  Created by Hunter Hillegas on 8/7/10.
@@ -29,26 +29,35 @@
  3. This notice may not be removed or altered from any source distribution.
  */
 
+
+//
+// https://github.com/blindsightcorp/BSMobileProvision
+//
+typedef NS_ENUM(NSInteger, UIApplicationReleaseMode) {
+    UIApplicationReleaseUnknown = 0,
+    UIApplicationReleaseSim,
+    UIApplicationReleaseDev,
+    UIApplicationReleaseAdHoc,
+    UIApplicationReleaseAppStore,
+    UIApplicationReleaseEnterprise,
+};
+
 #import <Cocoa/Cocoa.h>
 
-@class BuilderController;
+@interface NSString (MyAdditions)
+- (NSString *)md5;
+@end
 
-@interface BetaBuilderAppDelegate : NSObject <NSApplicationDelegate>
+@interface NSData (MyAdditions)
+- (NSString*)md5;
+@end
 
-@property IBOutlet NSWindow *window;
-@property (nonatomic) IBOutlet NSPanel *deploymentHelpPanel;
-@property (nonatomic) IBOutlet NSPanel *archiveIPAHelpPanel;
-@property (nonatomic) IBOutlet NSPanel *preferencesPanel;
-@property (nonatomic) IBOutlet BuilderController *builderController;
+@interface BuilderController : NSObject <NSFileManagerDelegate>
 
-- (BOOL)processCommandLineArguments:(NSArray *)arguments;
+@property (nonatomic, copy) NSString *templateFile;
+@property (nonatomic, assign) BOOL saveToDefaultFolder, uploadToAppStore;
 
-- (void)alertDidEnd:(NSAlert *)alert returnCode:(NSInteger)returnCode contextInfo:(void *)contextInfo;
-
-- (IBAction)showDeploymentHelpPanel:(id)sender;
-
-- (IBAction)showArchiveHelpPanel:(id)sender;
-
-- (IBAction)showPreferencesPanel:(id)sender;
+- (void)setupFromIPAFile:(NSString *)ipaFilename workspace:(NSString *)workspace;
+- (void)generateFilesWithWebserverAddress:(NSString *)webserver andOutputDirectory:(NSString *)outputPath;
 
 @end

@@ -1,0 +1,1 @@
+echo $1  | base64 -D | openssl x509 -subject -inform der | head -n 1
